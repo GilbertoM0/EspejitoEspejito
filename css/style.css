@@ -276,6 +276,35 @@ h1, h2, h3, h4 {
     margin-bottom: 10px;
 }
 
+/* Make each star position relative to place clickable halves */
+.rating .star {
+    position: relative;
+    display: inline-block;
+}
+.rating .star .star-half {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+.rating .star .star-half.left { left: 0; }
+.rating .star .star-half.right { right: 0; }
+.rating .star .star-half:focus { outline: none; }
+.rating .star i { pointer-events: none; }
+
+.rating-value {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* Make some layout adjustments on small screens */
 @media (max-width: 576px) {
     .hero-minimal { height: 420px; }

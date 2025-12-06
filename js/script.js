@@ -106,6 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.push(Object.assign({}, product, { qty: 1 }));
         }
         updateCartUI();
+        // Mostrar toast de confirmación "Agregado al carrito"
+        try {
+            const toastEl = document.getElementById('addCartToast');
+            if (toastEl && typeof bootstrap !== 'undefined') {
+                const body = toastEl.querySelector('.toast-body');
+                if (body) body.textContent = 'Agregado al carrito';
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            }
+        } catch (err) {
+            console.warn('No se pudo mostrar toast:', err);
+        }
     }
 
     function removeFromCart(index) {
