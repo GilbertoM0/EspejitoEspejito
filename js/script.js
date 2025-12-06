@@ -1,35 +1,175 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Seleccionar todos los botones de filtro y las tarjetas de producto
+    // FILTRO DE PRODUCTOS
     const filterButtons = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
 
-    // 2. Añadir un 'event listener' a cada botón de filtro
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remover la clase 'active' de todos los botones
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Añadir la clase 'active' al botón clickeado
             button.classList.add('active');
-
-            // Obtener la categoría del botón clickeado
             const category = button.getAttribute('data-category');
-            
-            // 3. Iterar sobre las tarjetas de producto para filtrar
+
             productCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
-                
-                // Si la categoría es 'all' (Todo) o si la categoría de la tarjeta coincide
                 if (category === 'all' || cardCategory === category) {
-                    // Mostrar la tarjeta
                     card.classList.remove('hidden');
                 } else {
-                    // Ocultar la tarjeta
                     card.classList.add('hidden');
                 }
             });
         });
     });
-    
-    // NOTA: Para implementar completamente el formulario del club o el carrito,
-    // necesitarías código JS más complejo para manejar la interacción con el servidor.
+
+    // CARRITO
+    const cartToggle = document.getElementById('cart-toggle');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const closeCartBtn = document.getElementById('close-cart');
+    const cartItemsList = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    let cart = [];
+
+    function saveCart() {
+        localStorage.setItem('espejito_cart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+        const stored = localStorage.getItem('espejito_cart');
+        if (stored) {
+            try {
+                cart = JSON.parse(stored);
+            } catch (e) {
+                cart = [];
+            }
+        }
+    }
+
+    function formatPrice(num) {
+        return '$' + Number(num).toLocaleString('es-CL');
+    }
+
+    function updateCartUI() {
+        // actualizar contador
+        const totalCount = cart.reduce((s, it) => s + it.qty, 0);
+        cartCount.textContent = totalCount;
+
+        // render items
+        cartItemsList.innerHTML = '';
+        cart.forEach((item, idx) => {
+            const li = document.createElement('li');
+            li.className = 'cart-item';
+            li.innerHTML = `
+                <img src="${item.img}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <div class="name">${item.name}</div>
+                    <div class="qty">${formatPrice(item.price)}</div>
+                    <div class="qty-controls">
+                        <button class="qty-btn qty-decrease" data-index="${idx}">-</button>
+                        <div class="qty-number" data-index="${idx}">${item.qty}</div>
+                        <button class="qty-btn qty-increase" data-index="${idx}">+</button>
+                    </div>
+                </div>
+                <div class="cart-item-actions">
+                    <button class="remove-item" data-index="${idx}">Eliminar</button>
+                </div>
+            `;
+            cartItemsList.appendChild(li);
+        });
+
+        const total = cart.reduce((s, it) => s + it.price * it.qty, 0);
+        cartTotal.textContent = formatPrice(total);
+        saveCart();
+    }
+
+    function addToCart(product) {
+        const existing = cart.find(it => it.name === product.name);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push(Object.assign({}, product, { qty: 1 }));
+        }
+        updateCartUI();
+    }
+
+    function removeFromCart(index) {
+        if (index >= 0 && index < cart.length) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+    }
+
+    // Delegación para botones dentro del carrito (Eliminar, +, -)
+    cartItemsList.addEventListener('click', (e) => {
+        if (e.target.matches('.remove-item')) {
+            const idx = parseInt(e.target.getAttribute('data-index'), 10);
+            removeFromCart(idx);
+            return;
+        }
+
+        if (e.target.matches('.qty-increase')) {
+            const idx = parseInt(e.target.getAttribute('data-index'), 10);
+            changeQty(idx, 1);
+            return;
+        }
+
+        if (e.target.matches('.qty-decrease')) {
+            const idx = parseInt(e.target.getAttribute('data-index'), 10);
+            changeQty(idx, -1);
+            return;
+        }
+    });
+
+    function changeQty(index, delta) {
+        if (index >= 0 && index < cart.length) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                // si llega a 0, eliminar del carrito
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+    }
+
+    // Añadir listeners a los botones de cada tarjeta de producto
+    productCards.forEach(card => {
+        const btn = card.querySelector('button');
+        if (!btn) return;
+
+        btn.addEventListener('click', () => {
+            const nameEl = card.querySelector('.product-name');
+            const priceEl = card.querySelector('.price');
+            const imgEl = card.querySelector('img');
+            const name = nameEl ? nameEl.textContent.trim() : 'Producto';
+            let priceText = priceEl ? priceEl.textContent.trim() : '$0';
+            // limpiar precio: eliminar símbolos y comas
+            priceText = priceText.replace(/[^0-9.,]/g, '').replace(/,/g, '');
+            const price = parseFloat(priceText) || 0;
+            const img = imgEl ? imgEl.getAttribute('src') : '';
+
+            addToCart({ name, price, img });
+        });
+    });
+
+    // Toggle del sidebar del carrito
+    cartToggle.addEventListener('click', () => {
+        cartSidebar.classList.toggle('open');
+    });
+    closeCartBtn.addEventListener('click', () => {
+        cartSidebar.classList.remove('open');
+    });
+
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío. Añade productos antes de pagar.');
+            return;
+        }
+        // Aquí podrías integrar el flujo de pago o redirigir a una página de checkout
+        alert('Proceder al pago (demo). Total: ' + cartTotal.textContent);
+    });
+
+    // Cargar carrito al inicio
+    loadCart();
+    updateCartUI();
 });
