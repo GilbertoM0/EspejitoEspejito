@@ -1,0 +1,386 @@
+/* Variables CSS */
+:root {
+    --primary-color: #A38B7D; /* Tono dorado/beige suave de la marca */
+    --secondary-color: #333; /* Texto principal oscuro */
+    --background-light: #fdfcf9; /* Fondo muy claro, casi blanco */
+    --background-dark: #222; /* Fondo oscuro para el club */
+    --accent-color: #e8a87c; /* Naranja/dorado para el botón CTA */
+    --font-serif: 'Georgia', serif; 
+    --font-sans: 'Arial', sans-serif;
+}
+
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background-color: var(--background-light);
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    margin-bottom: 1rem;
+}
+
+/* --- I. Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+/* --- Estilos para el LOGO en el HEADER --- */
+.logo {
+    display: flex; 
+    align-items: center; 
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+.logo-icon {
+    height: 30px; 
+    width: auto;
+    margin-right: 8px; 
+}
+/* Estiliza el texto del logo si lo envolviste en un <span> */
+.logo span { 
+    color: var(--secondary-color); 
+}
+
+.main-nav a {
+    margin: 0 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.main-nav .active {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.utility-icons i {
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* --- CORRECCIÓN: ELIMINAR LAYOUT VIEJO Y DEFINIR HERO MINIMALISTA --- */
+
+/* ELIMINADO: .hero-and-value-prop ya no existe en el HTML corregido */
+
+/* --- II. HERO MINIMALISTA (Pantalla Completa) --- */
+.hero-minimal {
+    width: 100%;
+    height: 600px; /* Altura grande para la vista principal */
+    /* *** RUTA DE IMAGEN CORREGIDA y genérica: DEBES USAR UNA IMAGEN DE FONDO GRANDE, NO EL LOGO *** */
+    background: url('../img/Fondo-Inicio.jpg') center center / cover no-repeat; 
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    text-align: center;
+}
+
+/* Overlay opcional para mejorar el contraste */
+.hero-minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Overlay muy sutil, ajusta si tu imagen es muy clara */
+    z-index: 1; 
+}
+
+.hero-content-minimal {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero-content-minimal .subtitle-top {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 4px; /* Mayor espaciado como en el ejemplo minimalista */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero-content-minimal h1 {
+    font-size: 5rem;
+    color: #fff; 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Efecto de resplandor suave */
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.cta-button-minimal {
+    background-color: #fff;
+    color: var(--secondary-color);
+    padding: 12px 30px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.cta-button-minimal:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* --- III. PROPUESTAS DE VALOR (Separadas) --- */
+.value-prop-separate {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 50px auto; 
+    padding: 20px;
+}
+
+/* Propuestas de Valor Items (Reutilizado) */
+.prop-item {
+    text-align: center;
+    padding: 15px;
+    flex-basis: 30%; /* Para que ocupen un tercio del espacio */
+}
+
+.prop-item .icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.prop-item h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.prop-item p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- IV. Nuestra Colección --- */
+.collection {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.collection h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.collection-filters {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background: #f1f1f1;
+    color: var(--secondary-color);
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.filter-btn.active {
+    background: var(--background-dark);
+    color: #fff;
+}
+
+.product-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    width: 250px;
+    text-align: center;
+    padding: 10px;
+    background: #fff;
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-card button {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.product-card button:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* --- V. Suscripción / Club --- */
+.club-promo {
+    background-color: var(--background-dark);
+    color: #fff;
+    padding: 60px 5%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.club-promo h2 {
+    font-size: 2rem;
+}
+
+.club-promo p {
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.club-promo form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.club-promo input[type="email"] {
+    padding: 12px;
+    width: 300px;
+    border: none;
+    font-size: 1rem;
+}
+
+.club-promo .submit-btn {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.club-promo .submit-btn:hover {
+    background-color: #d1956e;
+}
+
+/* --- VI. Pie de Página (Footer) --- */
+.main-footer {
+    background-color: #fff;
+    padding: 40px 5%;
+    border-top: 1px solid #eee;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    gap: 30px;
+}
+
+.footer-col {
+    flex-basis: 25%;
+}
+
+.footer-col h4 {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.brand-info h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.brand-info p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col li {
+    margin-bottom: 8px;
+}
+
+.social-icons a {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    color: var(--secondary-color);
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #999;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* Estilos de respuesta/Ocultar productos que no corresponden al filtro */
+.product-card.hidden {
+    display: none;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espejito Espejito - Refleja tu Esencia</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="img/Logo-Final-Joyeria.jpeg" alt="Logo de Espejito Espejito" class="logo-icon">
+            <span>ESPEJITO ESPEJITO</span> 
+        </div>
+        <nav class="main-nav">
+            <a href="#" class="active">TODOS</a>
+            <a href="#">ANILLOS</a>
+            <a href="#">COLLARES</a>
+            <a href="#">PENDIENTES</a>
+            <a href="#">OFERTAS</a>
+        </nav>
+        <div class="utility-icons">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero-minimal">
+            <div class="hero-content-minimal">
+                <p class="subtitle-top">NUEVA COLECCIÓN 2025</p>
+                <h1>Brillo que perdura. Calidad que te acompaña.</h1>
+                <a href="#" class="cta-button-minimal">DESCUBRIR</a>
+            </div>
+        </section>
+
+        <section class="value-prop-separate">
+            <div class="prop-item">
+                <i class="fas fa-gem icon"></i>
+                <h4>Calidad Premium</h4>
+                <p>Materiales auténticos certificados y artesanía experta.</p>
+            </div>
+            <div class="prop-item">
+                <i class="fas fa-hand-sparkles icon"></i>
+                <h4>Hecho con Amor</h4>
+                <p>Cada pieza es diseñada pensando en momentos inolvidables.</p>
+            </div>
+            <div class="prop-item">
+                <i class="fas fa-shipping-fast icon"></i>
+                <h4>Envío Seguro</h4>
+                <p>Empaque de lujo y envío asegurado a todo el país.</p>
+            </div>
+        </section>
+
+        <section class="collection">
+            <h2>Nuestra Colección</h2>
+
+            <div class="collection-filters">
+                <button class="filter-btn active" data-category="all">Todo</button>
+                <button class="filter-btn" data-category="anillos">Anillos</button>
+                <button class="filter-btn" data-category="collares">Collares</button>
+                <button class="filter-btn" data-category="pendientes">Pendientes</button>
+            </div>
+
+            <div class="product-gallery">
+                <!-- <div class="product-card" data-category="pendientes">
+                    <img src="img/collarDorado.png" alt="Pendientes Gota de Cristal">
+                    <p class="category-tag">PENDIENTES</p>
+                    <p class="product-name">Pendientes Gota de Cristal</p>
+                    <p class="price">$4,500</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div> -->
+                <div class="product-card" data-category="anillos">
+                    <img src="img/anillosMariposa.png" alt="Anillo Aura Diamante">
+                    <p class="category-tag">ANILLOS</p>
+                    <p class="product-name">Anillos</p>
+                    <p class="price">$500</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="collares">
+                    <img src="img/collarCorazon.png" alt="Collar Perla Real">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Corazon Diamante</p>
+                    <p class="price">$160</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                
+                <div class="product-card" data-category="pendientes">
+                    <img src="img/collarDorado.png" alt="Pendientes Gota de Cristal">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Gota Plateado con dorado</p>
+                    <p class="price">$300</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="pulseras">
+                    <img src="img/pulseraRomana.png" alt="Brazalete Minimalista">
+                    <p class="category-tag">PULSERAS</p>
+                    <p class="product-name">Brazalete Minimalista</p>
+                    <p class="price">$600</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="anillos">
+                    <img src="img/anillosMariposa.png" alt="Anillo Aura Diamante">
+                    <p class="category-tag">ANILLOS</p>
+                    <p class="product-name">Anillos</p>
+                    <p class="price">$500</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="collares">
+                    <img src="img/collarCorazon.png" alt="Collar Perla Real">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Corazon Diamante</p>
+                    <p class="price">$160</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                
+                <div class="product-card" data-category="pendientes">
+                    <img src="img/collarDorado.png" alt="Pendientes Gota de Cristal">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Gota Plateado con dorado</p>
+                    <p class="price">$300</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="pulseras">
+                    <img src="img/pulseraRomana.png" alt="Brazalete Minimalista">
+                    <p class="category-tag">PULSERAS</p>
+                    <p class="product-name">Brazalete Minimalista</p>
+                    <p class="price">$600</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="anillos">
+                    <img src="img/anillosMariposa.png" alt="Anillo Aura Diamante">
+                    <p class="category-tag">ANILLOS</p>
+                    <p class="product-name">Anillos</p>
+                    <p class="price">$500</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="collares">
+                    <img src="img/collarCorazon.png" alt="Collar Perla Real">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Corazon Diamante</p>
+                    <p class="price">$160</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                
+                <div class="product-card" data-category="pendientes">
+                    <img src="img/collarDorado.png" alt="Pendientes Gota de Cristal">
+                    <p class="category-tag">COLLARES</p>
+                    <p class="product-name">Collar Gota Plateado con dorado</p>
+                    <p class="price">$300</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+                <div class="product-card" data-category="pulseras">
+                    <img src="img/pulseraRomana.png" alt="Brazalete Minimalista">
+                    <p class="category-tag">PULSERAS</p>
+                    <p class="product-name">Brazalete Minimalista</p>
+                    <p class="price">$600</p>
+                    <button>AÑADIR AL CARRITO</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="club-promo">
+            <div class="club-content">
+                <h2>Únete al Club Espejito Espejito</h2>
+                <p>Suscríbete para recibir ofertas exclusivas y acceso anticipado a nuevas colecciones.</p>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="submit" class="submit-btn">ENVIAR</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col brand-info">
+                <h3>ESPEJITO ESPEJITO</h3>
+                <p>Joyería fina diseñada para resaltar tu brillo interior. Combinamos elegancia clásica con tendencias modernas.</p>
+            </div>
+            <div class="footer-col">
+                <h4>AYUDA</h4>
+                <ul>
+                    <li><a href="#">Envíos y Devoluciones</a></li>
+                    <li><a href="#">Guía de Tallas</a></li>
+                    <li><a href="#">Cuidado de Joyas</a></li>
+                    <li><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>LEGAL</h4>
+                <ul>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col follow-us">
+                <h4>SÍGUENOS</h4>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/espejito.espejitosanmac/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61582590843903"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/espejito.espejitosanmac/"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 Espejito Espejito. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
