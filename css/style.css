@@ -205,6 +205,24 @@ h1, h2, h3, h4 {
     margin-bottom: 30px;
 }
 
+/* Make filter buttons centered and responsive on small screens */
+.collection-filters .filter-btn {
+    min-width: 100px;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    .collection-filters {
+        gap: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .collection-filters .filter-btn {
+        flex: 0 0 45%; /* two buttons per row on very small screens */
+        min-width: 0;
+    }
+}
+
 .filter-btn {
     background: #f1f1f1;
     color: var(--secondary-color);
