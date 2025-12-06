@@ -261,6 +261,21 @@ h1, h2, h3, h4 {
     margin-bottom: 10px;
 }
 
+/* Rating stars next to price */
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+.rating .fa-star {
+    color: #f4c150; /* dorado */
+    font-size: 0.95rem;
+}
+.product-card .price {
+    margin-bottom: 10px;
+}
+
 /* Make some layout adjustments on small screens */
 @media (max-width: 576px) {
     .hero-minimal { height: 420px; }

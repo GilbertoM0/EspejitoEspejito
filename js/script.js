@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
 
+    // Añadir calificación por defecto (5 estrellas) en cada tarjeta si no existe
+    productCards.forEach(card => {
+        if (!card.querySelector('.rating')) {
+            const priceEl = card.querySelector('.price');
+            if (priceEl) {
+                const ratingWrap = document.createElement('div');
+                ratingWrap.className = 'rating';
+                // insertar 5 estrellas por defecto
+                ratingWrap.innerHTML = '<i class="fas fa-star" aria-hidden="true"></i>'.repeat(5);
+                // insertar antes del precio
+                priceEl.parentNode.insertBefore(ratingWrap, priceEl);
+            }
+        }
+    });
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));
