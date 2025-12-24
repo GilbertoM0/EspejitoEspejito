@@ -23,6 +23,9 @@ body {
     background-color: var(--background-light);
 }
 
+/* Evitar scroll horizontal cuando hay elementos decorativos posicionados fuera del ancho */
+html, body { overflow-x: hidden; }
+
 a {
     text-decoration: none;
     color: var(--secondary-color);
@@ -356,6 +359,91 @@ body {
     background: var(--primary-color);
     color: #fff;
 }
+
+/* --- Estilos para 'Productos más vendidos' (best-sellers) --- */
+.best-sellers {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,247,243,0.95));
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
+/* Decoración lateral (enredaderas) */
+.best-sellers { position: relative; overflow: visible; }
+.best-sellers .deco {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    width: 280px; /* aumentado un poco más */
+    opacity: 0.98;
+    pointer-events: none;
+}
+.best-sellers .deco-left { left: -80px; transform: translateY(-40%) scaleY(1.2);}
+.best-sellers .deco-right { right: -80px; transform: translateY(-40%) scaleX(-1) scaleY(1.2); }
+
+@media (max-width: 992px) {
+    .best-sellers .deco { display: none; }
+}
+
+/* Ajustes para pantallas muy grandes: imágenes decorativas más grandes y separadas */
+@media (min-width: 1200px) {
+    .best-sellers .deco { width: 380px; opacity: 1; }
+    .best-sellers .deco-left { left: -120px; }
+    .best-sellers .deco-right { right: -120px; }
+}
+.best-sellers .card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(16,24,40,0.08);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+.best-sellers .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(16,24,40,0.12);
+}
+.best-sellers .card-img-top {
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+.best-sellers .card:hover .card-img-top { transform: scale(1.04); }
+.best-sellers .card-body {
+    padding: 16px 14px;
+}
+.best-sellers .card-title {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+}
+.best-sellers .card-text {
+    color: #666;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.best-sellers .btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    font-weight: 600;
+}
+.best-sellers .btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+.best-sellers .carousel-control-prev-icon,
+.best-sellers .carousel-control-next-icon {
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18));
+    background-size: 28px 28px;
+}
+
+/* Mostrar mejor en pantallas grandes: centrar el card y hacerlo más estrecho */
+@media(min-width: 992px) {
+    .best-sellers .col-md-4 { max-width: 320px; }
+    .best-sellers .card-img-top { height: 260px; }
+}
+
 
 /* --- V. Suscripción / Club --- */
 .club-promo {
